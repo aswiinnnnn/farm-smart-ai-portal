@@ -26,7 +26,7 @@ const Login = () => {
         <div className="auth-form-container">
           <div className="flex items-center justify-center mb-8">
             <Leaf className="h-8 w-8 text-farm-green mr-2" />
-            <h1 className="text-2xl font-bold text-farm-dark-green">Farm Smart AI</h1>
+            <h1 className="text-2xl font-bold text-farm-dark-green">AgroVerse</h1>
           </div>
           <AuthForm onSubmit={handleLogin} />
         </div>

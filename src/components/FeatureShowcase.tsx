@@ -14,11 +14,12 @@ const FeatureItem = ({
   delay?: number 
 }) => (
   <div 
-    className="feature-card mb-4 animate-fade-in-up"
-    style={{ animationDelay: `${delay}ms` }}
+    className="feature-card mb-4 animate-pulse-subtle"
+    style={{ animationDelay: `${delay}ms`, animationDuration: '4s', animationIterationCount: 'infinite' }}
   >
     <div className="flex items-start gap-4">
-      <div className="mt-1 p-2 bg-white/20 rounded-lg animate-pulse-subtle">
+      <div className="mt-1 p-2 bg-white/20 rounded-lg animate-pulse-subtle" 
+           style={{ animationDuration: '3s', animationIterationCount: 'infinite' }}>
         {icon}
       </div>
       <div>
@@ -43,16 +44,17 @@ const FeatureShowcase = () => {
         top: `${Math.random() * 100}%`,
         animationDuration: `${Math.random() * 10 + 5}s`,
         animationDelay: `${Math.random() * 5}s`,
+        animationIterationCount: 'infinite',
         backgroundColor: i % 2 === 0 ? 'rgba(245, 193, 61, 0.15)' : 'rgba(255, 255, 255, 0.1)',
       }}
     />
   ));
 
   return (
-    <div className="features-container">
+    <div className="features-container dark-green-gradient">
       {circles}
       <div className="relative z-10 w-full max-w-lg">
-        <h2 className="text-3xl font-bold mb-2 text-farm-gold">Farm Smart AI</h2>
+        <h1 className="text-4xl font-bold mb-2 text-farm-gold font-display">AgroVerse</h1>
         <p className="text-white/80 mb-8">Your intelligent farming assistant powered by AI</p>
 
         <div className="space-y-5">

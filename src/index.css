@@ -107,7 +107,13 @@
   }
   
   .features-container {
-    @apply hidden md:flex md:w-3/5 bg-gradient-to-br from-farm-dark-green to-farm-green p-10 flex-col justify-center items-center text-white relative overflow-hidden;
+    @apply hidden md:flex md:w-3/5 p-10 flex-col justify-center items-center text-white relative overflow-hidden;
+  }
+  
+  .dark-green-gradient {
+    @apply bg-gradient-to-br from-farm-dark-green to-[#1a3a1a];
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
   }
   
   .auth-card {
@@ -129,5 +135,17 @@
   /* Animation for floating circles in the background */
   .floating-circle {
     @apply absolute rounded-full opacity-20 animate-float;
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 }

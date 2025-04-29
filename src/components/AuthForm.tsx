@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -13,12 +13,24 @@ interface AuthFormProps {
 
 const AuthForm = ({ isSignUp = false, onSubmit }: AuthFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    confirmPassword: '',
     name: '',
     phone: ''
   });
+  const [passwordMatch, setPasswordMatch] = useState(true);
+
+  useEffect(() => {
+    if (isSignUp) {
+      setPasswordMatch(
+        !formData.confirmPassword || 
+        formData.password === formData.confirmPassword
+      );
+    }
+  }, [formData.password, formData.confirmPassword, isSignUp]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -27,6 +39,12 @@ const AuthForm = ({ isSignUp = false, onSubmit }: AuthFormProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (isSignUp && formData.password !== formData.confirmPassword) {
+      setPasswordMatch(false);
+      return;
+    }
+    
     onSubmit(formData);
   };
 
@@ -38,7 +56,7 @@ const AuthForm = ({ isSignUp = false, onSubmit }: AuthFormProps) => {
         </h1>
         <p className="text-gray-600 mt-1">
           {isSignUp 
-            ? 'Join the smart farming revolution' 
+            ? 'Join the AgroVerse farming revolution' 
             : 'Login to access your farming assistant'}
         </p>
       </div>
@@ -115,6 +133,40 @@ const AuthForm = ({ isSignUp = false, onSubmit }: AuthFormProps) => {
             </button>
           </div>
         </div>
+
+        {isSignUp && (
+          <div className="space-y-2">
+            <Label 
+              htmlFor="confirmPassword" 
+              className="text-sm font-medium"
+            >
+              Confirm Password
+            </Label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+              <Input
+                id="confirmPassword"
+                name="confirmPassword"
+                type={showConfirmPassword ? 'text' : 'password'}
+                placeholder="Confirm your password"
+                required
+                className={`input-field pl-10 pr-10 ${!passwordMatch ? 'border-red-500 focus:ring-red-500' : ''}`}
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
+              <button
+                type="button"
+                className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              </button>
+            </div>
+            {!passwordMatch && (
+              <p className="text-xs text-red-500 mt-1">Passwords do not match</p>
+            )}
+          </div>
+        )}
 
         {isSignUp && (
           <div className="space-y-2">
