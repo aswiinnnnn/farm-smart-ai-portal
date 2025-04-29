@@ -50,6 +50,46 @@ const FeatureShowcase = () => {
     />
   ));
 
+  // Features data
+  const features = [
+    {
+      icon: <Sprout className="h-5 w-5 text-farm-gold" />,
+      title: "AI Personal Farming Assistant",
+      description: "Get personalized answers to farming questions and learn organic methods",
+      delay: 100
+    },
+    {
+      icon: <Leaf className="h-5 w-5 text-farm-gold" />,
+      title: "Plant Disease Detection",
+      description: "Identify plant diseases with AI and receive prevention recommendations",
+      delay: 200
+    },
+    {
+      icon: <CloudSun className="h-5 w-5 text-farm-gold" />,
+      title: "Crop Recommendation",
+      description: "Analyze soil and weather to determine the best crops for your area",
+      delay: 300
+    },
+    {
+      icon: <Wheat className="h-5 w-5 text-farm-gold" />,
+      title: "Price Prediction",
+      description: "AI forecasting of crop and farming commodity future prices",
+      delay: 400
+    },
+    {
+      icon: <Leaf className="h-5 w-5 text-farm-gold" />,
+      title: "Fertilizer Recommendation",
+      description: "Get AI recommendations for the best fertilizers based on your soil",
+      delay: 500
+    },
+    {
+      icon: <Users className="h-5 w-5 text-farm-gold" />,
+      title: "Farmers Community",
+      description: "Connect with other farmers to share knowledge and experiences",
+      delay: 600
+    }
+  ];
+
   return (
     <div className="features-container dark-green-gradient">
       {circles}
@@ -57,48 +97,16 @@ const FeatureShowcase = () => {
         <h1 className="text-4xl font-bold mb-2 text-farm-gold font-display">AgroVerse</h1>
         <p className="text-white/80 mb-8">Your intelligent farming assistant powered by AI</p>
 
-        <div className="space-y-5">
-          <FeatureItem 
-            icon={<Sprout className="h-5 w-5 text-farm-gold" />} 
-            title="AI Personal Farming Assistant" 
-            description="Get personalized answers to farming questions and learn organic methods"
-            delay={100}
-          />
-          
-          <FeatureItem 
-            icon={<Leaf className="h-5 w-5 text-farm-gold" />} 
-            title="Plant Disease Detection" 
-            description="Identify plant diseases with AI and receive prevention recommendations"
-            delay={200}
-          />
-          
-          <FeatureItem 
-            icon={<CloudSun className="h-5 w-5 text-farm-gold" />} 
-            title="Crop Recommendation" 
-            description="Analyze soil and weather to determine the best crops for your area"
-            delay={300}
-          />
-          
-          <FeatureItem 
-            icon={<Wheat className="h-5 w-5 text-farm-gold" />} 
-            title="Price Prediction" 
-            description="AI forecasting of crop and farming commodity future prices"
-            delay={400}
-          />
-          
-          <FeatureItem 
-            icon={<Leaf className="h-5 w-5 text-farm-gold" />} 
-            title="Fertilizer Recommendation" 
-            description="Get AI recommendations for the best fertilizers based on your soil"
-            delay={500}
-          />
-          
-          <FeatureItem 
-            icon={<Users className="h-5 w-5 text-farm-gold" />} 
-            title="Farmers Community" 
-            description="Connect with other farmers to share knowledge and experiences"
-            delay={600}
-          />
+        <div className="grid grid-cols-2 gap-4">
+          {features.map((feature, index) => (
+            <FeatureItem 
+              key={index}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+              delay={feature.delay}
+            />
+          ))}
         </div>
       </div>
       
