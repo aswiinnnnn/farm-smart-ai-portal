@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Leaf, Sprout, CloudSun, Users, Wheat, Soil } from 'lucide-react';
+import { Leaf, Sprout, CloudSun, Users, Wheat } from 'lucide-react';
 
 const FeatureItem = ({ 
   icon, 
@@ -85,7 +85,7 @@ const FeatureShowcase = () => {
           />
           
           <FeatureItem 
-            icon={<Soil className="h-5 w-5 text-farm-gold" />} 
+            icon={<Leaf className="h-5 w-5 text-farm-gold" />} 
             title="Fertilizer Recommendation" 
             description="Get AI recommendations for the best fertilizers based on your soil"
             delay={500}
