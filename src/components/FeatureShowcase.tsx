@@ -93,11 +93,11 @@ const FeatureShowcase = () => {
   return (
     <div className="features-container dark-green-gradient">
       {circles}
-      <div className="relative z-10 w-full max-w-lg">
+      <div className="relative z-10 w-full max-w-4xl px-6 md:px-10">
         <h1 className="text-4xl font-bold mb-2 text-farm-gold font-display">AgroVerse</h1>
         <p className="text-white/80 mb-8">Your intelligent farming assistant powered by AI</p>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {features.map((feature, index) => (
             <FeatureItem 
               key={index}
