@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Mail, Lock, User, Phone, Facebook, Eye, EyeOff } from 'lucide-react';
+import { Mail, Lock, User, Facebook, Eye, EyeOff } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface AuthFormProps {
@@ -18,8 +18,7 @@ const AuthForm = ({ isSignUp = false, onSubmit }: AuthFormProps) => {
     email: '',
     password: '',
     confirmPassword: '',
-    name: '',
-    phone: ''
+    name: ''
   });
   const [passwordMatch, setPasswordMatch] = useState(true);
 
@@ -168,26 +167,6 @@ const AuthForm = ({ isSignUp = false, onSubmit }: AuthFormProps) => {
           </div>
         )}
 
-        {isSignUp && (
-          <div className="space-y-2">
-            <Label htmlFor="phone" className="text-sm font-medium">
-              Phone Number (Optional)
-            </Label>
-            <div className="relative">
-              <Phone className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-              <Input
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder="+1 (555) 000-0000"
-                className="input-field pl-10"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-        )}
-
         <Button
           type="submit"
           className="w-full bg-farm-green hover:bg-farm-dark-green text-white py-2.5"
@@ -238,8 +217,8 @@ const AuthForm = ({ isSignUp = false, onSubmit }: AuthFormProps) => {
             type="button"
             className="social-login-button bg-white hover:bg-gray-50 border-gray-300"
           >
-            <Phone className="h-5 w-5 text-gray-600" />
-            <span className="sr-only">Phone</span>
+            <Mail className="h-5 w-5 text-gray-600" />
+            <span className="sr-only">Email</span>
           </button>
         </div>
       </div>

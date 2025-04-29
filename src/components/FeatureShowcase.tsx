@@ -14,12 +14,14 @@ const FeatureItem = ({
   delay?: number 
 }) => (
   <div 
-    className="feature-card mb-4 animate-pulse-subtle"
-    style={{ animationDelay: `${delay}ms`, animationDuration: '4s', animationIterationCount: 'infinite' }}
+    className="feature-card mb-4 hover:scale-105 transition-transform duration-300"
+    style={{ 
+      animation: `pulse 4s infinite ${delay}ms ease-in-out, float 6s infinite ${delay * 1.5}ms ease-in-out` 
+    }}
   >
     <div className="flex items-start gap-4">
-      <div className="mt-1 p-2 bg-white/20 rounded-lg animate-pulse-subtle" 
-           style={{ animationDuration: '3s', animationIterationCount: 'infinite' }}>
+      <div className="mt-1 p-2 bg-white/20 rounded-lg" 
+           style={{ animation: `glow 3s infinite ${delay * 0.5}ms alternate` }}>
         {icon}
       </div>
       <div>
@@ -33,7 +35,7 @@ const FeatureItem = ({
 
 const FeatureShowcase = () => {
   // Create decorative background elements
-  const circles = Array.from({ length: 6 }).map((_, i) => (
+  const circles = Array.from({ length: 8 }).map((_, i) => (
     <div 
       key={i}
       className="floating-circle" 
@@ -42,7 +44,7 @@ const FeatureShowcase = () => {
         height: `${Math.random() * 15 + 5}rem`,
         left: `${Math.random() * 100}%`,
         top: `${Math.random() * 100}%`,
-        animationDuration: `${Math.random() * 10 + 5}s`,
+        animationDuration: `${Math.random() * 10 + 10}s`,
         animationDelay: `${Math.random() * 5}s`,
         animationIterationCount: 'infinite',
         backgroundColor: i % 2 === 0 ? 'rgba(245, 193, 61, 0.15)' : 'rgba(255, 255, 255, 0.1)',
@@ -94,7 +96,7 @@ const FeatureShowcase = () => {
     <div className="features-container dark-green-gradient">
       {circles}
       <div className="relative z-10 w-full max-w-4xl px-6 md:px-10">
-        <h1 className="text-4xl font-bold mb-2 text-farm-gold font-display">AgroVerse</h1>
+        <h1 className="text-4xl font-bold mb-2 text-farm-gold font-display animate-pulse">AgroVerse</h1>
         <p className="text-white/80 mb-8">Your intelligent farming assistant powered by AI</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -113,6 +115,31 @@ const FeatureShowcase = () => {
       <div className="absolute bottom-4 right-4 text-xs text-white/60">
         Powered by advanced agricultural AI
       </div>
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.9; transform: scale(1.02); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); }
+        }
+        @keyframes glow {
+          from { box-shadow: 0 0 5px rgba(245, 193, 61, 0.5); }
+          to { box-shadow: 0 0 15px rgba(245, 193, 61, 0.8); }
+        }
+        .dark-green-gradient {
+          background: linear-gradient(-45deg, #1a3a1a, #2D5F2D, #1f4d1f, #22502a);
+          background-size: 400% 400%;
+          animation: gradientFlow 15s ease infinite;
+        }
+        @keyframes gradientFlow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </div>
   );
 };
